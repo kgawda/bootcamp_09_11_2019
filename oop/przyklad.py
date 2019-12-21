@@ -8,8 +8,11 @@ class SwietyMikolaj:
     def daj_prezent(self, dla_kogo):
         return f"Prezent dla {dla_kogo}"
 
-mikolaj1 = SwietyMikolaj("Mikołajek")
+    def __str__(self):
+        return f"Mikołaj {self.imie}"
 
+mikolaj1 = SwietyMikolaj("Mikołajek")
+print(str(mikolaj1)+" :)")
 print("Ten SwietyMikolaj nazywa się", mikolaj1.imie)
 
 inni_mikolajowie = [SwietyMikolaj("Andrzej"), SwietyMikolaj("Bltazar"), SwietyMikolaj()]

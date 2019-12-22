@@ -15,6 +15,13 @@ class Basket:
         self._products = {}
         #self._total_price = 0
 
+    @classmethod
+    def from_products(cls, given_products):
+        basket = cls()
+        for product in given_products:
+            basket.add_product(product, 1)
+        return basket
+
     def add_product(self, produkt, quantity):
         if produkt in self._products:  # key == produkt
             self._products[produkt] += quantity
@@ -80,3 +87,11 @@ if __name__ == '__main__':
     b.add_product(woda, 3)
     b.add_product(chleb, 1)
     print(b.generate_report())
+
+def test_basket_from_products():
+    p1 = Product(1, 'Pierogi', 10.00)
+    p2 = Product(2, 'Choinka', 20.00)
+    p3 = Product(3, 'Prezenty', 30.00)
+    b = Basket.from_products([p1, p2, p3])  # użyć @classmethod
+    assert isinstance(b, Basket)
+    assert len(b.generate_report().splitlines()) == 2 + 3

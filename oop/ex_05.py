@@ -1,3 +1,6 @@
+class NotEnoughMoney(Exception):
+    pass
+
 class CashMachine:
     def __init__(self):
         self._money = []  # lista posiadanych banknotów (int)
@@ -10,9 +13,14 @@ class CashMachine:
         # for bill in bills:
         #     if bill in (50, 100, 200):
         #         self._money.append(bill)
+        #     else:
+        #         TODO raise
+
+        # TODO zweryfikować ilość miejsca na banknowy
         self._money.extend(bills)
 
     def withdraw_money(self, amount):
+        # TODO weryfikacja amount i raise
         collected_sum = 0
         collected_bills = []
         self._money.sort(reverse=True)
@@ -24,7 +32,8 @@ class CashMachine:
             for bill in collected_bills:
                 self._money.remove(bill)
             return collected_bills
-        # TODO else:
+        else:
+            raise NotEnoughMoney()
 
 def test_cash_machine_init():
     machine = CashMachine()
@@ -44,3 +53,13 @@ def test_cash_machine_withdraw_different_order():
     machine = CashMachine()
     machine.put_money([200, 50, 50, 100])
     assert machine.withdraw_money(150) == [100, 50]
+
+if __name__ == "__main__":
+    machine = CashMachine()
+    machine.put_money([200, 50, 50, 100])
+    try:
+        bills = machine.withdraw_money(500)
+    except NotEnoughMoney:
+        print("Nie ma tyle w bankomacie")
+        bills = []
+    print("Dostaliśmy banknoty:", bills)

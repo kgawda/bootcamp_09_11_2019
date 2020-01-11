@@ -1,0 +1,4 @@
+linia 1
+    druga linia
+    trzecia linia pliku
+ostatnia linia

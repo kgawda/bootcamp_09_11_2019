@@ -1,0 +1,20 @@
+[
+    {
+        "imie": "Jan",
+        "nazwisko": "Kowalski",
+        "rok_ur": "1990",
+        "pensja": 5000.0
+    },
+    {
+        "imie": "Stanis\u0142aw",
+        "nazwisko": "Oczko",
+        "rok_ur": "1980",
+        "pensja": 7000.0
+    },
+    {
+        "imie": "Pawe\u0142",
+        "nazwisko": "Kr\u00f3l",
+        "rok_ur": "2000",
+        "pensja": 3000.0
+    }
+]

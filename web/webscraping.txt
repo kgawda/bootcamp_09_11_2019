@@ -1,0 +1,20 @@
+####### Terminal:
+pip install requests
+pip install beautifulsoup4
+
+####### Python console:
+import requests
+r = requests.get('https://wp.pl')
+from bs4 import BeautifulSoup
+s = BeautifulSoup(r.text, 'html.parser')
+print(s.prettify())
+s.a # pierwszy link
+s.find_all('a') # wszystkie linki
+for a in s.find_all('a'):
+    print(a.get_text(), a.get('href'))
+
+##### Terminal
+pip install scrapy
+cd C:\Users\kurs\workspace\projects\bootcamp\web
+scrapy runspider myspider.py -o blog.json
+scrapy runspider myspider_bs4.py -o blog2.json
